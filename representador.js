@@ -1,13 +1,7 @@
 function iniciar() {
 
-    $.ajax({
-        cache: false,
-        url: "data.json",
-        dataType: "json",
-        success: function(data) {
             d3.json("data.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.d3.json("data.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.
 
-                var matriz = [];
                 var matriz2 = [];
                 var sequence = [];
 
@@ -20,14 +14,13 @@ function iniciar() {
                     sequence = [];
                 });
 
-                console.log(matriz);
                 console.log(matriz2);
 
 
 
                 var particulas = [];
 
-                for (var i = 0; i < data[0].length; i++) {                                                           //Bucle para crear todos los círculos.
+                for (var i = 0; i < data[0].length; i++) {                                              //Bucle para crear todos los círculos.
                     var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");      //Creación de los círculos en SVG.
                     circle.setAttribute("cx", matriz2[0][0 + 2*i]);                                     //Asignación de atributos de los círculos en el instante inicial.
                     circle.setAttribute("cy", 50 - matriz2[0][1 + 2*i]);
@@ -54,20 +47,14 @@ function iniciar() {
                     },50);
                 })
             });
-        }
-    });
+        };
 
-}
 
 
 function iniciar2() {
 
-    $.ajax({
-        cache: false,
-        url: "data2.json",
-        dataType: "json",
-        success: function(data) {
-            d3.json("data.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.d3.json("data.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.
+
+            d3.json("data2.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.d3.json("data.json", function(data) {                                                       //Se utiliza la librería D3 para poder leer el archivo JSON que nos proporciona el programa principal.
 
                 var matriz = [];
                 var matriz2 = [];
@@ -85,7 +72,19 @@ function iniciar2() {
                 console.log(matriz);
                 console.log(matriz2);
 
+                 var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", 0);
+                rect.setAttribute("y", 25);
+                rect.setAttribute("width", 22);
+                rect.setAttribute("height", 0.5);
+                document.getElementById('representador').append(rect);
 
+                var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", 28);
+                rect.setAttribute("y", 25);
+                rect.setAttribute("width", 22);
+                rect.setAttribute("height", 0.5);
+                document.getElementById('representador').append(rect);
 
                 var particulas = [];
 
@@ -104,7 +103,7 @@ function iniciar2() {
 
                 var i = 1;
 
-                d3.select("#boton1 button").on("click", function movimiento() {                         //Función para el movimiento de las partículas.
+                d3.select("#boton5 button").on("click", function movimiento() {                         //Función para el movimiento de las partículas.
                     setInterval( function () {                                                          //Se establece un intervalo de 0,8s entre cada representación.
                         if (i < matriz2.length) {
                             for (j = 0; j < particulas.length; j++) {
@@ -116,7 +115,5 @@ function iniciar2() {
                     },50);
                 })
             });
-        }
-    });
+        };
 
-}

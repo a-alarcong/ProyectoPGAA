@@ -36,7 +36,23 @@
 
             <!--With this line the dict format is constructed-->
             <!--note that the ` is crucial-->
-            var str1 = `{"particulas": "${message || 'default'}", "tiempo_foco": "${$("#input_text2").val()}"}`;
+            var str1 = `{"particulas": "${message || 'default'}", "tiempo_foco": "${$("#input_text2").val()}" , "tipo": "atentado"}`;
+
+            ws.send(str1);
+
+            var newMessage = document.createElement('p');
+            newMessage.textContent = "Client dice: " + message;
+            document.getElementById('messages_txt').appendChild(newMessage);
+        });
+
+
+                $("#button3").click(function(evt) {
+            evt.preventDefault();
+            var message = $("#input_text").val();
+
+            <!--With this line the dict format is constructed-->
+            <!--note that the ` is crucial-->
+            var str1 = `{"particulas": "${message || 'default'}", "tiempo_foco": "${$("#input_text2").val()}" , "tipo": "evacuacion"}`;
 
             ws.send(str1);
 
@@ -115,13 +131,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header centered">
-                                Simulación de atentado
-                            </h3>
-                        </div>
-                    </div>
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Introduzca los siguientes parámetros:</h3>
@@ -133,12 +143,13 @@
                                         Inserte número de partículas
                                     </div>
                                     <div class="col-sm-4 centered">
-                                        Inserte tiempo de aparición del foco
+                                        Inserte tiempo
                                     </div>
                                     <div class="col-sm-4 centered">
                                     </div>
                                 </div>
                                 <div class="row tamrow1 size">
+
                                     <div class="col-sm-4 centered">
                                         <input id="input_text">
                                     </div>
@@ -146,13 +157,29 @@
                                         <input id="input_text2">
                                     </div>
                                     <div class="col-sm-2 centered">
-                                        <button class="btn btn-primary" type="button" id="button2" onclick="iniciar()">Insertar</button>
-                                        <button class="btn btn-primary" type="button" id="button3" onclick="iniciar2()">Insertar</button>
+                                        <button class="btn btn-primary" type="button" id="button2">Atentado</button>
+                                        <button class="btn btn-primary" type="button" id="button3">Evacuación</button>
                                     </div>
-                                    <div class="col-sm-2 centered"  id="boton1">
+                                    <div class="col-sm-1 centered"  id="boton1">
+                                        <button class="btn btn-primary" type="button">INICIAR</button>
+                                    </div>
+                                    <div class="col-sm-1 centered"  id="boton5">
                                         <button class="btn btn-primary" type="button">INICIAR</button>
                                     </div>
                                 </div>
+                                <div class="row tamrow1 size">
+
+                                    <div class="col-sm-8 centered">
+                                    </div>
+                                    <div class="col-sm-2 centered">
+                                        <button class="btn btn-primary" type="button" onclick="iniciar()">LEER</button>
+                                        <button class="btn btn-primary" type="button" onclick="iniciar2()">LEER</button>
+                                    </div>
+                                    <div class="col-sm-2 centered">
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
